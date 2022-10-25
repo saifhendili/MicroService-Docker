@@ -6,6 +6,10 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="C:\Users\SaifHendili\eclipse-workspace\baladee"/>
+			<item value="C:\Users\SaifHendili\eclipse-workspace\velo"/>
+			<item value="C:\Users\SaifHendili\eclipse-workspace\balade"/>
+			<item value="C:\Users\SaifHendili\eclipse-workspace\spring-boot-docker-master"/>
 			<item value="C:\Users\SaifHendili\eclipse-workspace\apigatewaysecurity"/>
 			<item value="C:\Users\SaifHendili\eclipse-workspace\EurekaServer"/>
 			<item value="C:\Users\SaifHendili\eclipse-workspace\eurekaserver"/>
@@ -24,5 +28,11 @@
 		<item key="DIALOG_WIDTH" value="700"/>
 		<item key="DIALOG_HEIGHT" value="645"/>
 		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
+	</section>
+	<section name="NewWizardAction">
+		<item key="NewWizardSelectionPage.STORE_SELECTED_ID" value="org.springsource.ide.eclipse.commons.gettingstarted.wizard.boot.NewSpringBootWizard"/>
+		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
+			<item value="org.springsource.ide.eclipse.boot.wizards.category"/>
+		</list>
 	</section>
 </section>

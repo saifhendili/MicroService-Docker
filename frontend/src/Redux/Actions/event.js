@@ -81,7 +81,7 @@ export const addEvent = (nom,description,date,nbvelo,place) => async (dispatch) 
         type: DELETE_EVENT,
         payload: id,
       });
-      dispatch(SetAlert('Client Removed', 'success'));
+      dispatch(SetAlert('Event Removed', 'success'));
       } catch (err) {
       dispatch({
         type: ERROR_EVENT,
@@ -96,7 +96,7 @@ export const addEvent = (nom,description,date,nbvelo,place) => async (dispatch) 
       dispatch({
         type: EDIT_EVENT,
       });
-      dispatch(SetAlert('Client Edited', 'success'));
+      dispatch(SetAlert('Event Edited', 'success'));
       } catch (err) {
       dispatch({
         type: ERROR_EVENT,

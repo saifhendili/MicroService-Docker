@@ -19,7 +19,7 @@ function EditEntretien() {
       }, []);
       const onsubmit = (e) => {
         e.preventDefault();
-        dispatch(editEntretien(searchParams.get("_id"),tarif,description,duree))
+        dispatch(editEntretien(searchParams.get("_id"),tarif,description,duree,searchParams.get("idevent")))
     }
   return loading||entretien==null?<Spinner/>: (
     <div class="container-fluid flex-grow-1 container-p-y">

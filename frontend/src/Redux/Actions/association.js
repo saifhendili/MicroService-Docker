@@ -81,7 +81,7 @@ export const addAssoc = (nom,description,owner,nbdepersonne,objective) => async 
         type: DELETE_ASSOC,
         payload: id,
       });
-      dispatch(SetAlert('Client Removed', 'success'));
+      dispatch(SetAlert('Association Removed', 'success'));
       } catch (err) {
       dispatch({
         type: ERROR_ASSOC,
@@ -95,7 +95,7 @@ export const addAssoc = (nom,description,owner,nbdepersonne,objective) => async 
       dispatch({
         type: EDIT_ASSOC,
       });
-      dispatch(SetAlert('Client Edited', 'success'));
+      dispatch(SetAlert('Association Edited', 'success'));
       } catch (err) {
       dispatch({
         type: ERROR_ASSOC,

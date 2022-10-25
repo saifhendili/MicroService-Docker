@@ -1,5 +1,4 @@
 import React,{useEffect,useState} from 'react'
-import { deleteClient, getClients } from '../../Redux/Actions/client';
 import { useDispatch, useSelector } from "react-redux";
 import Spinner from "../Layout/Spinner";
 import { Link } from 'react-router-dom';
@@ -20,7 +19,7 @@ function ListEvent() {
         },[])
   return loading||events==null?<Spinner/>:(
     <div class="container-fluid flex-grow-1 container-p-y">
-    <h4 class="font-weight-bold py-3 mb-0">List clients</h4>
+    <h4 class="font-weight-bold py-3 mb-0">List Event</h4>
     <div class="text-muted small mt-0 mb-4 d-block breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#"><i class="feather icon-home"></i></a></li>
@@ -41,8 +40,8 @@ function ListEvent() {
                                     <th>description</th>
                                     <th>date</th>
                                     <th>nbvelo</th>
-                                    <th>picture</th>
                                     <th>place</th>
+                                    <th>Add Entretien</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
                                 </tr>
@@ -57,9 +56,12 @@ function ListEvent() {
                                     <td>{x.date}</td>
                                     <td>1</td>
                                     <td>{x.place}</td>
+                                    <Link to={`/AddEntretien?_id=${x.id}`}>
+        <td>     <button className='btn btn-secondary'>Add Entretien</button> </td>  </Link>
+        <td>           <Link to={`/EditEvent?_id=${x.id}`}>
+     <button className='btn btn-secondary'>Edit</button>  </Link></td> 
 
-                                 <Link to={`/EditEvent?_id=${x.id}`}>
-        <td>     <button className='btn btn-secondary'>Edit</button> </td>  </Link>
+
         
         <td><button onClick={(e)=>dispatch(deleteEvent(x.id))}  className='btn btn-danger'>Delete</button></td>
 

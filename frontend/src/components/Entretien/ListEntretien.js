@@ -1,5 +1,4 @@
 import React,{useEffect,useState} from 'react'
-import { deleteClient, getClients } from '../../Redux/Actions/client';
 import { useDispatch, useSelector } from "react-redux";
 import Spinner from "../Layout/Spinner";
 import { Link } from 'react-router-dom';
@@ -20,7 +19,7 @@ function ListEntretien() {
         },[])
   return loading?<Spinner/>:(
     <div class="container-fluid flex-grow-1 container-p-y">
-    <h4 class="font-weight-bold py-3 mb-0">List clients</h4>
+    <h4 class="font-weight-bold py-3 mb-0">List Entretien</h4>
     <div class="text-muted small mt-0 mb-4 d-block breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#"><i class="feather icon-home"></i></a></li>
@@ -40,6 +39,7 @@ function ListEntretien() {
                                     <th>tarif</th>
                                     <th>description</th>
                                     <th>duree</th>
+                                    <th>Id Event</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
                                 </tr>
@@ -52,7 +52,8 @@ function ListEntretien() {
                                  <td className='spacing'>{x.tarif}</td>
                                     <td>{x.description}</td>
                                  <td>{x.duree}</td>
-                                 <Link to={`/EditEntretien?_id=${x.idEntretien}`}>
+                                 <td>{x.idEvent}</td>
+                                 <Link to={`/EditEntretien?_id=${x.idEntretien}&&idevent=${x.idEvent}`}>
         <td>     <button className='btn btn-secondary'>Edit</button> </td>  </Link>
         
         <td><button onClick={(e)=>dispatch(deleteEntretien(x.idEntretien))}  className='btn btn-danger'>Delete</button></td>

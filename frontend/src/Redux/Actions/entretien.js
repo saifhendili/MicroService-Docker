@@ -4,7 +4,7 @@ import {
     ADD_ENTRETIEN,GET_ENTRETIEN,GET_ENTRETIENS,EDIT_ENTRETIEN,DELETE_ENTRETIEN,ERROR_ENTRETIEN
 } from '../Constants/Entretienconst';
 
-export const addEntretien = (tarif,description,duree) => async (dispatch) => {
+export const addEntretien = (tarif,description,duree,idEvent) => async (dispatch) => {
     const config = {
       headers: {
         'Content-Type': 'application/json',
@@ -14,7 +14,7 @@ export const addEntretien = (tarif,description,duree) => async (dispatch) => {
     try {
       const res = await axios.post(
         `/entretien/add`,
-        {tarif,description,duree},
+        {tarif,description,duree,idEvent},
         config
       );
   
@@ -22,7 +22,7 @@ export const addEntretien = (tarif,description,duree) => async (dispatch) => {
         type: ADD_ENTRETIEN,
         payload: res.data,
       });
-      dispatch(SetAlert('Client Added', 'success'));
+      dispatch(SetAlert('Entretien Added', 'success'));
     } catch (err) {
         const errors = err.response.data.errors;
 
@@ -80,7 +80,7 @@ export const addEntretien = (tarif,description,duree) => async (dispatch) => {
         type: DELETE_ENTRETIEN,
         payload: id,
       });
-      dispatch(SetAlert('Client Removed', 'success'));
+      dispatch(SetAlert('Entretien Removed', 'success'));
       } catch (err) {
       dispatch({
         type: ERROR_ENTRETIEN,
@@ -88,14 +88,14 @@ export const addEntretien = (tarif,description,duree) => async (dispatch) => {
       });
     }
   };
-  export const editEntretien = (idEntretien,tarif,description,duree) => async (dispatch) => {
+  export const editEntretien = (idEntretien,tarif,description,duree,idEvent) => async (dispatch) => {
     try {
-   await axios.put(`/entretien/update/`, {idEntretien,tarif,description,duree},);
+   await axios.put(`/entretien/update/`, {idEntretien,tarif,description,duree,idEvent},);
   
       dispatch({
         type: EDIT_ENTRETIEN,
       });
-      dispatch(SetAlert('Client Edited', 'success'));
+      dispatch(SetAlert('Entretien Edited', 'success'));
       } catch (err) {
       dispatch({
         type: ERROR_ENTRETIEN,

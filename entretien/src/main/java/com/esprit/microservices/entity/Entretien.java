@@ -33,6 +33,7 @@ public class Entretien implements Serializable {
 	private String tarif;
 	private String description;
 	private float duree;
+	private Long idEvent;
 
 
 

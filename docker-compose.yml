@@ -16,6 +16,9 @@ services:
       - bored-network
     
 
+
+
+
   app:
     container_name: nodejsapp
     build:
@@ -74,6 +77,19 @@ services:
       - spring.datasource.username=postgres
       - spring.datasource.password=root
 
+
+
+
+  docker-mysql_2:
+    container_name: mysqldocker
+    image: "mysql:5.6"
+    environment:
+      - MYSQL_ROOT_PASSWORD=
+      - MYSQL_DATABASE=microservice
+      - MYSQL_ALLOW_EMPTY_PASSWORD=root
+      - MYSQL_ROOT_USERNAME=root
+    ports:
+      - 3308:3306 
 
   entretien:
 
