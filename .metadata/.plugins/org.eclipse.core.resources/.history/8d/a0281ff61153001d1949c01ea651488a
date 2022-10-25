@@ -1,0 +1,27 @@
+package com.esprit.microservices.Services;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import com.esprit.microservices.Repo.EntretienRepo;
+import com.esprit.microservices.entity.Entretien;
+
+@Service
+
+public class EntretienServices {
+
+	@Autowired
+	private EntretienRepo associationrepo;
+
+	public Entretien saveAssociation(@RequestBody Entretien association) {
+		return associationrepo.save(association);
+	}
+
+	public Entretien getbyidnow(Long idassociation) {
+		System.out.println("saved");
+		return associationrepo.findById(idassociation).orElse(null);
+	}
+
+}

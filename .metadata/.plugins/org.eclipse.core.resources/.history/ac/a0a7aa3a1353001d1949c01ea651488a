@@ -1,0 +1,41 @@
+package com.esprit.microservices.Services;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import com.esprit.microservices.Repo.EntretienRepo;
+import com.esprit.microservices.entity.Entretien;
+
+@Service
+
+public class EntretienServices {
+
+	@Autowired
+	private EntretienRepo entretienrepo;
+
+	public Entretien saveAssociation(@RequestBody Entretien association) {
+		return entretienrepo.save(association);
+	}
+
+	public Entretien getbyidnow(Long idassociation) {
+		System.out.println("saved");
+		return entretienrepo.findById(idassociation).orElse(null);
+	}
+
+	public List<Entretien> retrieveAllEvent() {
+		// TODO Auto-generated method stub
+		return (List<Entretien>) this.entretienrepo.findAll();
+	}
+	public void deleteEvent(Long id) {
+		 this.entretienrepo.deleteById(id);
+	}
+
+	
+	public Entretien updateEvent(Entretien c) {
+		return this.entretienrepo.save(c);
+	}
+}

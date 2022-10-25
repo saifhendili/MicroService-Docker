@@ -1,0 +1,63 @@
+package com.esprit.microservices.Controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.esprit.microservices.Services.EntretienServices;
+import com.esprit.microservices.entity.Entretien;
+
+@RestController
+@RequestMapping("/Entretien")
+public class EntretienController {
+	
+	@Autowired
+	private EntretienServices entretienservices;
+	
+	
+	@PostMapping("/add")
+
+	public Entretien saveAssociation(@RequestBody Entretien association)
+	{
+		
+		return entretienservices.saveAssociation(association);
+	}
+	@GetMapping("/{id}")
+	public Entretien findAssociation(@PathVariable("id") Long idassociation)
+	{
+		return entretienservices.getbyidnow(idassociation);
+	}
+
+
+	@GetMapping("/retrieveallevent")
+	@ResponseBody
+	public List<Entretien> getevent() {
+	List<Entretien> listevents = entretienservices.retrieveAllEvent();
+	return listevents; 
+	}
+	
+	@PutMapping("/modifyevent")
+	@ResponseBody
+	public Entretien modifyevent(@RequestBody Entretien event) {
+		return entretienservices.updateEvent(event);
+	}
+
+	
+	
+	
+	@DeleteMapping("/remove-event/{event-id}")
+    @ResponseBody
+	public void removeevent(@PathVariable("event-id") Long eventid) {
+		entretienservices.deleteEvent(eventid);
+	}
+
+}

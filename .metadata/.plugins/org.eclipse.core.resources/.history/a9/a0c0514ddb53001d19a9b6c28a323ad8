@@ -1,0 +1,29 @@
+server:
+  port: 9191
+
+spring:
+  application:
+    name: apigateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lowerCaseServiceId: true    
+      routes:
+        - id: association
+          uri: lb://association
+          predicates:
+            - Path=/Association/**
+        - id: event
+          uri: lb://event
+          predicates:
+            - Path=/event/**
+        - id: entretien
+          uri: lb://entretien
+          predicates:
+            - Path=/entretien/**
+        - id: app
+          uri: lb://app
+          predicates:
+            - Path=/app/**

@@ -1,0 +1,137 @@
+version: "2.7"
+
+  #  forum-service   
+services:
+  eureka-server:
+
+    build:
+      context: ./eureka-server/
+      dockerfile: Dockerfile
+    restart: always
+    container_name: eurekaserver
+    image: eurekaserver
+    ports:
+      - "8761:8761"
+    networks:
+      - bored-network
+    
+
+  app:
+    container_name: nodejsapp
+    build:
+      context: ./nodebackend
+      dockerfile: Dockerfile
+    image: nodejsapp
+    networks:
+      - bored-network
+    ports:
+      - '5435:5000'  
+    environment:
+      - eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka
+    depends_on:
+      - eureka-server      
+
+
+  association:
+
+    build:
+      context: ./association
+      dockerfile: Dockerfile
+    container_name: springbootdockerassociation
+    image: springbootdockerassociation
+    networks:
+        - bored-network
+    depends_on:
+      - postgres
+      - eureka-server
+    ports:
+      - "8072:8040"
+    environment:
+      - eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka
+      - spring.datasource.url=jdbc:postgresql://postgres:5432/microservice
+      - spring.datasource.username=postgres
+      - spring.datasource.password=root
+
+
+
+  event:
+
+    build:
+      context: ./event
+      dockerfile: Dockerfile
+    container_name: event
+    image: event
+    networks:
+        - bored-network
+    depends_on:
+      - postgres
+      - eureka-server
+    ports:
+      - "8071:8040"
+    environment:
+      - eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka
+      - spring.datasource.url=jdbc:postgresql://postgres:5432/microservice
+      - spring.datasource.username=postgres
+      - spring.datasource.password=root
+
+
+  entretien:
+
+    build:
+      context: ./entretien
+      dockerfile: Dockerfile
+    container_name: entretien
+    image: entretien
+    networks:
+        - bored-network
+    depends_on:
+      - postgres
+      - eureka-server
+    ports:
+      - "8070:8040"
+    environment:
+      - eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka
+      - spring.datasource.url=jdbc:postgresql://postgres:5432/microservice
+      - spring.datasource.username=postgres
+      - spring.datasource.password=root
+ 
+  postgres:
+     container_name: postgres
+     image: postgres
+     restart: always
+     networks:
+       - bored-network
+    
+     environment:
+       POSTGRES_PASSWORD: root
+       POSTGRES_DB: microservice
+       POSTGRES_USER: postgres
+     ports:
+       - "2345:5432"
+
+ 
+
+
+  apigateway:
+    build:
+      context: ./apigateway
+      dockerfile: Dockerfile
+    container_name: apigateway
+    image: apigateway
+    networks:
+      - bored-network
+    depends_on:
+      - eureka-server
+    ports:
+      - "9191:9191"
+    environment:
+      - eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka
+
+
+
+
+
+    
+networks:
+  bored-network:
+  

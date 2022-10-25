@@ -1,0 +1,21 @@
+server:
+  port: 9191
+
+spring:
+  application:
+    name: apigateway
+  cloud:
+    gateway:
+      routes:
+        - id: association
+          uri: lb://association
+          predicates:
+            - Path=/Association/**
+        - id: event
+          uri: lb://event
+          predicates:
+            - Path=/event/**
+        - id: association
+          uri: lb://association
+          predicates:
+            - Path=/Association/**

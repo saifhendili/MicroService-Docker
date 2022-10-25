@@ -1,0 +1,15 @@
+    export const ADD_FOLDER = 'ADD_FOLDER';
+    export const ERROR_FOLDER = 'ERROR_FOLDER';
+    export const ADD_MARCHANDISE = 'ADD_MARCHANDISE';
+    export const ADD_TRANSPORTEUR = 'ADD_TRANSPORTEUR';
+    export const GET_FOLDER = 'GET_FOLDER';
+    export const GET_FOLDERS = 'GET_FOLDERS';
+    export const ADD_AVIDDEPARDD = 'ADD_AVIDDEPARDD';
+    export const ADD_BONLIV = 'ADD_BONLIV';
+    export const ADD_LTA = 'ADD_LTA';
+    export const ADD_SOUSFOLDER = 'ADD_SOUSFOLDER';
+    export const ADD_MARCHANDISE_SOUSD = 'ADD_MARCHANDISE_SOUSD';
+    export const ADD_PRODUCT_SOUSD = 'ADD_PRODUCT_SOUSD';
+    export const GET_SOUSDOSSIER = 'GET_SOUSDOSSIER';
+    export const ADD_BONLIVSD = 'ADD_BONLIVSD';
+    export const ADD_LTASD = 'ADD_LTASD';
